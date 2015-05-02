@@ -1,0 +1,73 @@
+﻿@model Maps.Models.Map
+
+@{
+    ViewBag.Title = "NERDHOUSE DND";
+    Layout = null;
+}
+<link href="~/Content/themes/DND/Map.css" rel="stylesheet" />
+<link href="~/Scripts/JQUERYUI/jquery-ui.min.css" rel="stylesheet" />
+
+<style>
+    .character_avatar {
+        margin: 0px;
+        padding: 0px;
+        float:left;
+        cursor: pointer;
+        z-index: 3;
+        position: relative;
+        top: 0;
+        left: 0;
+
+    }
+</style>
+
+
+
+
+<div class="map_body">
+
+    <!-- The background img of the actual map !-->
+    <img src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["UPLOADED_MAP_IMAGES_RELATIVE_PATH"])/@Model.Background_IMG_Path" class="map_img" />
+
+    <div class="map">
+    </div>
+
+
+</div>
+
+
+<div class="map_block" style="display: none;"></div>
+
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/JQUERYUI/jquery-ui.min.js"></script>
+<script src="~/Scripts/DND/Map.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        // Map Load Logic (see "Map.js")
+
+        map_init("@Model.Width_Squares", "@Model.Height_Squares");
+
+        //create an array of our players based on server data
+        var characters = @Html.Raw(
+        Json.Encode(
+            ((IEnumerable<Maps.Models.Character>)ViewBag.Chars).Select(c => new
+            {
+                Name = c.Name,
+                Avatar = c.Avatar_IMG,
+                ID = c.Character_ID
+
+            })
+        )
+    );
+
+
+        addCharactersToMap(characters,'@Url.Content(System.Configuration.ConfigurationManager.AppSettings["UPLOADED_MAP_IMAGES_RELATIVE_PATH"])');
+
+
+    });
+
+
+</script>

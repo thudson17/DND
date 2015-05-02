@@ -6,52 +6,92 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Maps.Models;
+using AutoMapper;
+using System.IO;
+using System.Configuration;
 
 namespace Maps.Controllers
 {
     public class MapController : Controller
     {
-        private DND_MAPS_Entities db = new DND_MAPS_Entities();
+        private DND_MAPS_Entities db = new DND_MAPS_Entities(); //database context class, should be cleaned up on de-struct
 
         //
         // GET: /Map/
-
+        // "Root" / Listing Page for any maps..
         public ActionResult Index()
         {
-            return View(db.Maps.ToList());
-        }
-
-        //
-        // GET: /Map/Details/5
-
-        public ActionResult Details(int id = 0)
-        {
-            Map map = db.Maps.Find(id);
-            if (map == null)
+            try
             {
-                return HttpNotFound();
+                Mapper.CreateMap<Map, vmMap>(); //auto map entity model to view model
+
+                var model = db.Maps.ToList();
+
+                return View(Mapper.Map(model, new List<vmMap>()));
             }
-            return View(map);
+            catch (Exception)
+            {
+                return View();
+            }
         }
+
+        //PLAY the Map :)
+        [HttpGet]
+        public ActionResult Play(int id)
+        {
+            return View(db.Maps.Find(id));
+        }
+
+        #region CRUD
+      
 
         //
         // GET: /Map/Create
 
         public ActionResult Create()
         {
-            return View();
+            vmMap model = new vmMap();
+
+            //setup default properties for a new viewmodel
+            model.Active = true;
+            model.SortOrder = 1;
+
+            return View(model);
         }
 
         //
         // POST: /Map/Create
 
         [HttpPost]
-        public ActionResult Create(Map map)
+        public ActionResult Create(vmMap map)
         {
             if (ModelState.IsValid)
             {
-                db.Maps.Add(map);
-                db.SaveChanges();
+
+                Mapper.CreateMap<vmMap,Map>(); //auto map view model to a fresh entity model...
+                Map newMap = new Map();
+                Mapper.Map(map, newMap);
+
+
+                if (map.Background_IMG_Upload != null && map.Background_IMG_Upload.ContentLength > 0)
+                {
+
+                    //generate a guid, store the file upload as this name...
+                    Guid fileName = Guid.NewGuid();
+
+                    string targetFolder = HttpContext.Server.MapPath(ConfigurationManager.AppSettings["UPLOADED_MAP_IMAGES_RELATIVE_PATH"]);
+                    string targetPath = Path.Combine(targetFolder, fileName.ToString());
+                    targetPath += "." + map.Background_IMG_Upload.FileName.Split('.')[1];
+
+                    map.Background_IMG_Upload.SaveAs(targetPath); //save the uploaded file to the server's file system...
+
+                    newMap.Background_IMG_Path = map.Background_IMG_Upload.FileName.Split('.')[1]; //store the path of uploaded file in the database entity..
+
+                    db.Maps.Add(newMap);
+                    db.SaveChanges();
+
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -68,22 +108,56 @@ namespace Maps.Controllers
             {
                 return HttpNotFound();
             }
-            return View(map);
+
+            Mapper.CreateMap<Map, vmMap>(); //auto map entity model to view model
+            vmMap model = new vmMap();
+
+
+            return View(Mapper.Map(map, model));
+
+        
         }
 
         //
         // POST: /Map/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Map map)
+        public ActionResult Edit(vmMap model)
         {
             if (ModelState.IsValid)
             {
+
+                Mapper.CreateMap<vmMap, Map>(); //auto map view model to a fresh entity model...
+                Map map = db.Maps.Find(model.Map_ID);
+                string current_filePath = map.Background_IMG_Path;
+                Mapper.Map(model, map);
+
+                if (model.Background_IMG_Upload != null && model.Background_IMG_Upload.ContentLength > 0)
+                {
+
+                    //generate a guid, store the file upload as this name...
+                    Guid fileName = Guid.NewGuid();
+
+                    string targetFolder = HttpContext.Server.MapPath(ConfigurationManager.AppSettings["UPLOADED_MAP_IMAGES_RELATIVE_PATH"]);
+                    string targetPath = Path.Combine(targetFolder, fileName.ToString());
+                    targetPath += "." + model.Background_IMG_Upload.FileName.Split('.')[1];
+
+                    model.Background_IMG_Upload.SaveAs(targetPath); //save the uploaded file to the server's file system...
+
+                    map.Background_IMG_Path = model.Background_IMG_Upload.FileName.Split('.')[1]; //store the path of uploaded file in the database entity..
+
+                }
+                else
+                    map.Background_IMG_Path = current_filePath;
+
+
                 db.Entry(map).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(map);
+
+
+            return View(model);
         }
 
         //
@@ -110,6 +184,7 @@ namespace Maps.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        #endregion
 
         protected override void Dispose(bool disposing)
         {

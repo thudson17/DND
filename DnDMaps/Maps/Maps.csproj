@@ -252,6 +252,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\DND\Map.css" />
+    <Content Include="Content\themes\DND\_Layout.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <EntityDeploy Include="Models\Maps.edmx">
@@ -314,13 +316,14 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Map\Index.cshtml" />
-    <Content Include="Views\Map\Details.cshtml" />
     <Content Include="Views\Map\Create.cshtml" />
     <Content Include="Views\Map\Edit.cshtml" />
     <Content Include="Views\Map\Delete.cshtml" />
+    <Content Include="Views\Map\Play.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploaded Maps\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

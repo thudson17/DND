@@ -1,69 +1,59 @@
-﻿@model IEnumerable<Maps.Models.Map>
+﻿@model IEnumerable<Maps.Models.vmMap>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
+<h2>#Maps</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { Class = "play_button" })
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Map_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Background_IMG_Path)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Width_Squares)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Height_Squares)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SortOrder)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Active)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Map_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Background_IMG_Path)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Width_Squares)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Height_Squares)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SortOrder)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Active)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+<div style="height: 500px;overflow:auto;">
 
-</table>
+
+
+    <table class="maple_listing">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>Size
+            </th>
+
+
+
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td style="width: 40%;">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Width_Squares)
+                    x
+              @Html.DisplayFor(modelItem => item.Height_Squares)
+                </td>
+
+
+
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Map_ID }, new { Class = "play_button" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Map_ID }, new { Class = "delete_button", Style = "margin-right:25px;" })
+
+                    @Html.ActionLink("Play That Shit >>", "Play", new { id = item.Map_ID }, new { Class = "play_button" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

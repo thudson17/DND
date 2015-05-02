@@ -1,0 +1,40 @@
+﻿@model Maps.Models.Map
+
+@{
+    ViewBag.Title = "NERDHOUSE DND";
+    Layout = null;
+}
+<link href="~/Content/themes/DND/Map.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/DND/Map.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        // Map Load Logic (see "Map.js")
+
+        map_init("@Model.Width_Squares","@Model.Height_Squares");
+
+    });
+
+
+</script>
+
+
+<div class="map_body">
+
+    <!-- The background img of the actual map !-->
+    <img src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["UPLOADED_MAP_IMAGES_RELATIVE_PATH"])/@Model.Background_IMG_Path" class="map_img" />
+
+    <div class="map">
+       
+
+
+
+    </div>
+
+
+</div>
+
+
+ <div class="map_block">test</div>

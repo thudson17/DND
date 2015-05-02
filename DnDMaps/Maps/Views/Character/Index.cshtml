@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Maps.Models.Character>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Characters</h2>
+
+<p>
+      @Html.ActionLink("Create New", "Create", null, new { Class = "play_button" })
+</p>
+<div style="height: 500px; overflow: auto;">
+
+
+
+    <table class="maple_listing">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Character_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Player.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Avatar_IMG)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Character_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Player.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Avatar_IMG)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Character_ID }, new { Class = "play_button" }) 
+     
+            @Html.ActionLink("Delete", "Delete", new { id = item.Character_ID }, new { Class = "delete_button" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

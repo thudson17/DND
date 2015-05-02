@@ -1,0 +1,61 @@
+﻿@model Maps.Models.Character
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Character</h2>
+
+<br />
+<br />
+
+@using (Html.BeginForm("Edit", "Character", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Character</legend>
+
+         @Html.HiddenFor(model => model.Character_ID)
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Player_ID, "Player")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Player_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.Player_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+         <div class="editor-field">
+
+
+            <input type="file" id="Avatar_IMG_Upload" name="Avatar_IMG_Upload" />
+
+            @Html.ValidationMessageFor(model => model.Avatar_IMG)
+
+
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

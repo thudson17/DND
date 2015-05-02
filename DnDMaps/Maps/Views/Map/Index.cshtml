@@ -50,7 +50,7 @@
                     @Html.ActionLink("Edit", "Edit", new { id = item.Map_ID }, new { Class = "play_button" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.Map_ID }, new { Class = "delete_button", Style = "margin-right:25px;" })
 
-                    @Html.ActionLink("Play That Shit >>", "Play", new { id = item.Map_ID }, new { Class = "play_button" })
+                    @Html.ActionLink("Play That Shit >>", "Play", new { id = item.Map_ID }, new { Class = "play_button", target="_blank" })
                 </td>
             </tr>
         }

@@ -25,6 +25,8 @@ namespace Maps.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Character> Characters { get; set; }
         public DbSet<Map> Maps { get; set; }
+        public DbSet<Player> Players { get; set; }
     }
 }

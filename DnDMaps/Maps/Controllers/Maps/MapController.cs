@@ -39,6 +39,8 @@ namespace Maps.Controllers
         [HttpGet]
         public ActionResult Play(int id)
         {
+            ViewBag.Chars = db.Characters.ToList();
+
             return View(db.Maps.Find(id));
         }
 
@@ -85,7 +87,7 @@ namespace Maps.Controllers
 
                     map.Background_IMG_Upload.SaveAs(targetPath); //save the uploaded file to the server's file system...
 
-                    newMap.Background_IMG_Path = map.Background_IMG_Upload.FileName.Split('.')[1]; //store the path of uploaded file in the database entity..
+                    newMap.Background_IMG_Path = fileName + "." + map.Background_IMG_Upload.FileName.Split('.')[1]; //store the path of uploaded file in the database entity..
 
                     db.Maps.Add(newMap);
                     db.SaveChanges();
@@ -144,7 +146,7 @@ namespace Maps.Controllers
 
                     model.Background_IMG_Upload.SaveAs(targetPath); //save the uploaded file to the server's file system...
 
-                    map.Background_IMG_Path = model.Background_IMG_Upload.FileName.Split('.')[1]; //store the path of uploaded file in the database entity..
+                    map.Background_IMG_Path = fileName + "." + model.Background_IMG_Upload.FileName.Split('.')[1]; //store the path of uploaded file in the database entity..
 
                 }
                 else

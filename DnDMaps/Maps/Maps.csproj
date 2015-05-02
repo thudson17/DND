@@ -169,6 +169,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Characters\CharacterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Maps\MapController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -176,6 +177,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Character.cs">
+      <DependentUpon>Maps.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Map.cs">
       <DependentUpon>Maps.tt</DependentUpon>
     </Compile>
@@ -194,6 +198,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Maps.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Player.cs">
+      <DependentUpon>Maps.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vmCharacter.cs" />
     <Compile Include="Models\vmMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -274,6 +282,7 @@
       <LastGenOutput>Maps.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\DND\Map.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -285,10 +294,36 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JQUERYUI\external\jquery\jquery.js" />
+    <Content Include="Scripts\JQUERYUI\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Scripts\JQUERYUI\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\JQUERYUI\index.html" />
+    <Content Include="Scripts\JQUERYUI\jquery-ui.css" />
+    <Content Include="Scripts\JQUERYUI\jquery-ui.js" />
+    <Content Include="Scripts\JQUERYUI\jquery-ui.min.css" />
+    <Content Include="Scripts\JQUERYUI\jquery-ui.min.js" />
+    <Content Include="Scripts\JQUERYUI\jquery-ui.structure.css" />
+    <Content Include="Scripts\JQUERYUI\jquery-ui.structure.min.css" />
+    <Content Include="Scripts\JQUERYUI\jquery-ui.theme.css" />
+    <Content Include="Scripts\JQUERYUI\jquery-ui.theme.min.css" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -320,6 +355,10 @@
     <Content Include="Views\Map\Edit.cshtml" />
     <Content Include="Views\Map\Delete.cshtml" />
     <Content Include="Views\Map\Play.cshtml" />
+    <Content Include="Views\Character\Index.cshtml" />
+    <Content Include="Views\Character\Create.cshtml" />
+    <Content Include="Views\Character\Edit.cshtml" />
+    <Content Include="Views\Character\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

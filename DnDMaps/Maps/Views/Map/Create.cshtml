@@ -1,0 +1,83 @@
+﻿@model Maps.Models.Map
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Map</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Map_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Map_ID)
+            @Html.ValidationMessageFor(model => model.Map_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Background_IMG_Path)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Background_IMG_Path)
+            @Html.ValidationMessageFor(model => model.Background_IMG_Path)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Width_Squares)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Width_Squares)
+            @Html.ValidationMessageFor(model => model.Width_Squares)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Height_Squares)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Height_Squares)
+            @Html.ValidationMessageFor(model => model.Height_Squares)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SortOrder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SortOrder)
+            @Html.ValidationMessageFor(model => model.SortOrder)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Active)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Active)
+            @Html.ValidationMessageFor(model => model.Active)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

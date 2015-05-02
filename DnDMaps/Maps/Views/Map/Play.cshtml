@@ -11,13 +11,48 @@
     .character_avatar {
         margin: 0px;
         padding: 0px;
-        float:left;
+        float: left;
         cursor: pointer;
         z-index: 3;
         position: relative;
         top: 0;
         left: 0;
+    }
 
+    .toolbox {
+        padding: 10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        float: left;
+        z-index: 4;
+        height: 100%;
+        width: 10%;
+        background-color: white;
+        visibility: hidden;
+    }
+
+    body {
+        overflow: hidden;
+    }
+
+    .npc_desc {
+        float: right;
+        position: absolute;
+        bottom: -20px;
+        width: 100%;
+        left: 0px;
+    }
+
+
+    .toolbox_dragabble {
+        width: 50px;d
+        display: inline-block;
+    }
+
+    .npc {
+        width: @Html.Raw(Model.Width_Squares / 2)px;
+     height: @Html.Raw(Model.Height_Squares / 2)px;
     }
 </style>
 
@@ -33,8 +68,68 @@
     </div>
 
 
+
+
 </div>
 
+<div class="toolbox">
+    <h2>#Toolbox</h2>
+
+    <div class="toolbox_dragabble">
+        <img src="~/Images/Toolbox_Icons/sword.png" style="width: 100%;" />
+        <input type="text" class="npc_desc" />
+    </div>
+
+    <div class="toolbox_dragabble">
+        <img src="~/Images/Toolbox_Icons/bolt.png" style="width: 100%;" />
+        <input type="text" class="npc_desc" />
+    </div>
+
+    <div class="toolbox_dragabble">
+        <img src="~/Images/Toolbox_Icons/brain.png" style="width: 100%;" />
+        <input type="text" class="npc_desc" />
+    </div>
+
+    <div class="toolbox_dragabble">
+        <img src="~/Images/Toolbox_Icons/fire.png" style="width: 100%;" />
+        <input type="text" class="npc_desc" />
+    </div>
+
+    <div class="toolbox_dragabble">
+        <img src="~/Images/Toolbox_Icons/flag.png" style="width: 100%;" />
+        <input type="text" class="npc_desc" />
+    </div>
+
+    <div class="toolbox_dragabble">
+        <img src="~/Images/Toolbox_Icons/frost.png" style="width: 100%;" />
+        <input type="text" class="npc_desc" />
+    </div>
+
+    <div class="toolbox_dragabble">
+        <img src="~/Images/Toolbox_Icons/gay.png" style="width: 100%;" />
+        <input type="text" class="npc_desc" />
+    </div>
+
+    <div class="toolbox_dragabble">
+        <img src="~/Images/Toolbox_Icons/hex.png" style="width: 100%;" />
+        <input type="text" class="npc_desc" />
+    </div>
+
+    <div class="toolbox_dragabble">
+        <img src="~/Images/Toolbox_Icons/skull.png" style="width: 100%;" />
+        <input type="text" class="npc_desc" />
+    </div>
+
+    <div class="toolbox_dragabble">
+        <img src="~/Images/Toolbox_Icons/tower.png" style="width: 100%;" />
+        <input type="text" class="npc_desc" />
+    </div>
+
+</div>
+
+
+
+</div>
 
 <div class="map_block" style="display: none;"></div>
 
@@ -63,8 +158,12 @@
         )
     );
 
-
+        //add the server character to the map js
         addCharactersToMap(characters,'@Url.Content(System.Configuration.ConfigurationManager.AppSettings["UPLOADED_MAP_IMAGES_RELATIVE_PATH"])');
+
+        //setup key bindings for shit like showing toolbox..
+        initKeyBindings();
+
 
 
     });

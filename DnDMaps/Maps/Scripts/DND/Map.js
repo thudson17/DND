@@ -39,6 +39,59 @@ function map_init(_squares_wide, _squares_high) {
     console.log("Window Width : " + client_width);
 
     buildMapGrid();
+    toolBoxInit();
+
+}
+
+
+function toolBoxInit() {
+
+    $(".toolbox_dragabble").draggable(
+        {
+            helper: "clone"
+        }
+        );
+
+
+    $body.droppable(
+          {
+              accept: ".toolbox_dragabble",
+              drop: function (e, ui) {
+
+
+
+                  $(this).append(
+                    $(ui.draggable).clone()
+                      .unbind("draggable")
+                    .removeClass("toolbox_dragabble")
+                      .addClass("npc")
+                    .css({
+                        position: "absolute",
+                        top: e.clientY - e.offsetY,
+                        left: e.clientX - e.offsetX,
+                        "z-index": 5
+                    })
+                   .draggable({ containment: "parent" })
+
+                  );
+              }
+          }
+        );
+
+
+    $(".toolbox").droppable(
+          {
+              accept: ".npc",
+              drop: function (e, ui) {
+                  console.log("drop");
+                  $(ui.draggable).remove();
+
+              }
+          }
+        );
+
+
+
 
 }
 
@@ -50,7 +103,7 @@ function buildMapGrid() {
 
     blocks = new Array();
 
-//while we still have verticle height left on page, loop and add boxes 
+    //while we still have verticle height left on page, loop and add boxes 
     while (row_height < client_height) {
         //while we still have width left on page, loop and add boxes to current row
         while (row_width < client_width) {
@@ -62,7 +115,7 @@ function buildMapGrid() {
 
             blocks.push($new_block); //store the newly created block in our global array
 
-     
+
             //need to determine if we can actually fit another full block on the edge of the screen, and render a new block accordingly...
             if ((row_width + squares_wide + squares_border_offset) > client_width) {
                 var diff = client_width - row_width - squares_border_offset;
@@ -86,21 +139,21 @@ function buildMapGrid() {
 
     }
 
-  
+
 }
 
 //view will pass an object array of the characters over to the map here
 function addCharactersToMap(_characters, _avatarpath) {
-   
+
     //loop through each character provided and add them into our map!
     $.each(_characters, function (index, character) {
-        
+
         //now we use the array of blocks to position each character in a starting area.
 
         var $avatar = $("<div>", { id: character.Character_ID, class: "character_avatar", title: character.Name });
-      
-        $avatar.css("height", (squares_high /2).toString() + "px");
-        $avatar.css("width", (squares_wide / 2).toString() + "px");
+
+        $avatar.css("height", (squares_high / 1.5).toString() + "px");
+        $avatar.css("width", (squares_wide / 1.5).toString() + "px");
 
         $avatar.html("<img src='" + _avatarpath + '/' + character.Avatar + "' style='height:100%;width:100%;'/>");
 
@@ -112,8 +165,32 @@ function addCharactersToMap(_characters, _avatarpath) {
 
 }
 
+/**
+Keybinding crap
+*/
+
+function initKeyBindings() {
+
+    $(window).keypress(function (e) {
+        switch (e.which) {
+
+            case 100:
+                showToolBox();
+                break;
+
+        }
+    });
+}
+
+function showToolBox() {
+
+    var $toolbox = $(".toolbox");
+
+    if ($toolbox.css("visibility") == "hidden") {
+        $toolbox.css("visibility", "visible");
+    }
+    else
+        $toolbox.css("visibility", "hidden");
 
 
-function blockDrop() {
-    alert();
 }

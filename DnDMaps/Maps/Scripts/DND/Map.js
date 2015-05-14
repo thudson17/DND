@@ -51,7 +51,7 @@ function toolBoxInit() {
     $(".toolbox_dragabble").draggable(
         {
             helper: "clone"
-           
+
         }
         );
 
@@ -59,7 +59,7 @@ function toolBoxInit() {
     $body.droppable(
           {
               accept: ".toolbox_dragabble",
-             
+
               drop: function (e, ui) {
 
                   $(this).append(
@@ -73,10 +73,12 @@ function toolBoxInit() {
                         left: e.clientX - e.offsetX,
                         "z-index": 5
                     })
-                   .draggable({ containment: "parent"  ,start: function (event, ui) {
+                   .draggable({
+                       containment: "parent", start: function (event, ui) {
 
-                       $last_moved_character = $(this);
-                   }})
+                           $last_moved_character = $(this);
+                       }
+                   })
 
                   );
               }
@@ -164,7 +166,7 @@ function addCharactersToMap(_characters, _avatarpath) {
 
         $avatar.draggable({
             start: function (event, ui) {
-             
+
                 $last_moved_character = $(this);
             }
         });
@@ -182,7 +184,7 @@ Keybinding crap
 function initKeyBindings() {
 
     $(document).keypress(function (e) {
-       
+
         switch (e.which) {
             case 100:
                 showToolBox();

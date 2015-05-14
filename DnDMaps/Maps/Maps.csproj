@@ -268,6 +268,18 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Maps.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\Toolbox_Icons\bolt.png" />
+    <Content Include="Images\Toolbox_Icons\brain.png" />
+    <Content Include="Images\Toolbox_Icons\D&amp;D 4th Edition Icons #1.bmp" />
+    <Content Include="Images\Toolbox_Icons\fire.png" />
+    <Content Include="Images\Toolbox_Icons\flag.png" />
+    <Content Include="Images\Toolbox_Icons\frost.png" />
+    <Content Include="Images\Toolbox_Icons\gay.png" />
+    <Content Include="Images\Toolbox_Icons\hex.png" />
+    <Content Include="Images\Toolbox_Icons\med.png" />
+    <Content Include="Images\Toolbox_Icons\skull.png" />
+    <Content Include="Images\Toolbox_Icons\sword.png" />
+    <Content Include="Images\Toolbox_Icons\tower.png" />
     <Content Include="Models\Maps.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Maps.edmx</DependentUpon>

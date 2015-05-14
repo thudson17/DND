@@ -11,6 +11,8 @@ var $body; //the body of the map with all layers (this one is draggable)
 
 var $startblock; //the top/left most square on the map, all other squares are simply clones of this guy
 
+var $last_moved_character; //stores a reference to the last character dragged around, used for rotation
+
 var blocks; //array of the blocks on the map;
 
 //initializes the map size from server, etc.
@@ -49,6 +51,7 @@ function toolBoxInit() {
     $(".toolbox_dragabble").draggable(
         {
             helper: "clone"
+           
         }
         );
 
@@ -56,9 +59,8 @@ function toolBoxInit() {
     $body.droppable(
           {
               accept: ".toolbox_dragabble",
+             
               drop: function (e, ui) {
-
-
 
                   $(this).append(
                     $(ui.draggable).clone()
@@ -71,7 +73,10 @@ function toolBoxInit() {
                         left: e.clientX - e.offsetX,
                         "z-index": 5
                     })
-                   .draggable({ containment: "parent" })
+                   .draggable({ containment: "parent"  ,start: function (event, ui) {
+
+                       $last_moved_character = $(this);
+                   }})
 
                   );
               }
@@ -157,7 +162,12 @@ function addCharactersToMap(_characters, _avatarpath) {
 
         $avatar.html("<img src='" + _avatarpath + '/' + character.Avatar + "' style='height:100%;width:100%;'/>");
 
-        $avatar.draggable();
+        $avatar.draggable({
+            start: function (event, ui) {
+             
+                $last_moved_character = $(this);
+            }
+        });
 
         $($avatar).appendTo($body);
 
@@ -171,15 +181,40 @@ Keybinding crap
 
 function initKeyBindings() {
 
-    $(window).keypress(function (e) {
+    $(document).keypress(function (e) {
+       
         switch (e.which) {
-
             case 100:
                 showToolBox();
                 break;
 
         }
     });
+
+
+    $(document).keydown(function (e) {
+
+        switch (e.which) {
+            case 37: // left
+                $last_moved_character.css("-webkit-transform", "rotate(-180deg)");
+                break;
+
+            case 38: // up
+                $last_moved_character.css("-webkit-transform", "rotate(270deg)");
+                break;
+
+            case 39: // right
+                $last_moved_character.css("-webkit-transform", "rotate(0deg)");
+                break;
+
+            case 40: // down
+                $last_moved_character.css("-webkit-transform", "rotate(90deg)");
+                break;
+
+
+        }
+    });
+
 }
 
 function showToolBox() {

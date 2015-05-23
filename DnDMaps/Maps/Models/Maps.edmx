@@ -5,56 +5,158 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DND_MAPS_Entities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="DND_MAPS_EntitiesStoreContainer">
-          <EntitySet Name="Character" EntityType="DND_MAPS_Entities.Store.Character" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Map" EntityType="DND_MAPS_Entities.Store.Map" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Player" EntityType="DND_MAPS_Entities.Store.Player" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_Character_Player" Association="DND_MAPS_Entities.Store.FK_Character_Player">
-            <End Role="Player" EntitySet="Player" />
-            <End Role="Character" EntitySet="Character" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Character">
-          <Key>
-            <PropertyRef Name="Character_ID" />
-          </Key>
-          <Property Name="Character_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Player_ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="1000" />
-          <Property Name="Avatar_IMG" Type="varchar(max)" />
-        </EntityType>
-        <EntityType Name="Map">
-          <Key>
-            <PropertyRef Name="Map_ID" />
-          </Key>
-          <Property Name="Map_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="2000" />
-          <Property Name="Background_IMG_Path" Type="varchar(max)" Nullable="false" />
-          <Property Name="Width_Squares" Type="int" Nullable="false" />
-          <Property Name="Height_Squares" Type="int" Nullable="false" />
-          <Property Name="SortOrder" Type="int" Nullable="false" />
-          <Property Name="Active" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Player">
-          <Key>
-            <PropertyRef Name="Player_ID" />
-          </Key>
-          <Property Name="Player_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="500" />
-        </EntityType>
-        <Association Name="FK_Character_Player">
-          <End Role="Player" Type="DND_MAPS_Entities.Store.Player" Multiplicity="1" />
-          <End Role="Character" Type="DND_MAPS_Entities.Store.Character" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Player">
-              <PropertyRef Name="Player_ID" />
-            </Principal>
-            <Dependent Role="Character">
-              <PropertyRef Name="Player_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema></edmx:StorageModels>
+  <EntityContainer Name="DND_MAPS_EntitiesStoreContainer">
+    <EntitySet Name="Characters" EntityType="DND_MAPS_Entities.Store.Characters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Maps" EntityType="DND_MAPS_Entities.Store.Maps" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Players" EntityType="DND_MAPS_Entities.Store.Players" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Encounters" EntityType="DND_MAPS_Entities.Store.Encounters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Monsters" EntityType="DND_MAPS_Entities.Store.Monsters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Encounter_Monster" EntityType="DND_MAPS_Entities.Store.Encounter_Monster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Encounter_Character" EntityType="DND_MAPS_Entities.Store.Encounter_Character" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Character_Player" Association="DND_MAPS_Entities.Store.FK_Character_Player">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="Character" EntitySet="Characters" />
+    </AssociationSet>
+    <AssociationSet Name="EncounterEncounter_Monster" Association="DND_MAPS_Entities.Store.EncounterEncounter_Monster">
+      <End Role="Encounter" EntitySet="Encounters" />
+      <End Role="Encounter_Monster" EntitySet="Encounter_Monster" />
+    </AssociationSet>
+    <AssociationSet Name="MonsterEncounter_Monster" Association="DND_MAPS_Entities.Store.MonsterEncounter_Monster">
+      <End Role="Monster" EntitySet="Monsters" />
+      <End Role="Encounter_Monster" EntitySet="Encounter_Monster" />
+    </AssociationSet>
+    <AssociationSet Name="EncounterEncounter_Character" Association="DND_MAPS_Entities.Store.EncounterEncounter_Character">
+      <End Role="Encounter" EntitySet="Encounters" />
+      <End Role="Encounter_Character" EntitySet="Encounter_Character" />
+    </AssociationSet>
+    <AssociationSet Name="Encounter_CharacterCharacter" Association="DND_MAPS_Entities.Store.Encounter_CharacterCharacter">
+      <End Role="Encounter_Character" EntitySet="Encounter_Character" />
+      <End Role="Character" EntitySet="Characters" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Characters">
+    <Key>
+      <PropertyRef Name="Character_ID" />
+    </Key>
+    <Property Name="Character_ID" Type="int" Nullable="false" />
+    <Property Name="Player_ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="1000" />
+    <Property Name="Avatar_IMG" Type="varchar(max)" Nullable="true" />
+    <Property Name="Initative_Bonus" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maps">
+    <Key>
+      <PropertyRef Name="Map_ID" />
+    </Key>
+    <Property Name="Map_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="2000" />
+    <Property Name="Background_IMG_Path" Type="varchar(max)" Nullable="false" />
+    <Property Name="Width_Squares" Type="int" Nullable="false" />
+    <Property Name="Height_Squares" Type="int" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Players">
+    <Key>
+      <PropertyRef Name="Player_ID" />
+    </Key>
+    <Property Name="Player_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Encounters">
+    <Key>
+      <PropertyRef Name="Encounter_ID" />
+    </Key>
+    <Property Name="Encounter_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Monsters">
+    <Key>
+      <PropertyRef Name="Monster_ID" />
+    </Key>
+    <Property Name="Monster_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Avatar_IMG" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Encounter_Monster">
+    <Key>
+      <PropertyRef Name="Monster_ID" />
+      <PropertyRef Name="Encounter_ID" />
+    </Key>
+    <Property Name="Encounter_ID" Type="int" Nullable="false" />
+    <Property Name="Monster_ID" Type="int" Nullable="false" />
+    <Property Name="Initiative" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Encounter_Character">
+    <Key>
+      <PropertyRef Name="Encounter_ID" />
+      <PropertyRef Name="Character_ID" />
+    </Key>
+    <Property Name="Encounter_ID" Type="int" Nullable="false" />
+    <Property Name="Character_ID" Type="int" Nullable="false" />
+    <Property Name="Initiative" Type="smallint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Character_Player">
+    <End Role="Player" Type="DND_MAPS_Entities.Store.Players" Multiplicity="1" />
+    <End Role="Character" Type="DND_MAPS_Entities.Store.Characters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="Player_ID" />
+      </Principal>
+      <Dependent Role="Character">
+        <PropertyRef Name="Player_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EncounterEncounter_Monster">
+    <End Role="Encounter" Type="DND_MAPS_Entities.Store.Encounters" Multiplicity="1" />
+    <End Role="Encounter_Monster" Type="DND_MAPS_Entities.Store.Encounter_Monster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encounter">
+        <PropertyRef Name="Encounter_ID" />
+      </Principal>
+      <Dependent Role="Encounter_Monster">
+        <PropertyRef Name="Encounter_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MonsterEncounter_Monster">
+    <End Role="Monster" Type="DND_MAPS_Entities.Store.Monsters" Multiplicity="1" />
+    <End Role="Encounter_Monster" Type="DND_MAPS_Entities.Store.Encounter_Monster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Monster">
+        <PropertyRef Name="Monster_ID" />
+      </Principal>
+      <Dependent Role="Encounter_Monster">
+        <PropertyRef Name="Monster_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EncounterEncounter_Character">
+    <End Role="Encounter" Type="DND_MAPS_Entities.Store.Encounters" Multiplicity="1" />
+    <End Role="Encounter_Character" Type="DND_MAPS_Entities.Store.Encounter_Character" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encounter">
+        <PropertyRef Name="Encounter_ID" />
+      </Principal>
+      <Dependent Role="Encounter_Character">
+        <PropertyRef Name="Encounter_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Encounter_CharacterCharacter">
+    <End Role="Encounter_Character" Type="DND_MAPS_Entities.Store.Encounter_Character" Multiplicity="*" />
+    <End Role="Character" Type="DND_MAPS_Entities.Store.Characters" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Character">
+        <PropertyRef Name="Character_ID" />
+      </Principal>
+      <Dependent Role="Encounter_Character">
+        <PropertyRef Name="Character_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DND_MAPS_Entities" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -64,6 +166,26 @@
           <EntitySet Name="Players" EntityType="DND_MAPS_Entities.Player" />
           <AssociationSet Name="FK_Character_Player" Association="DND_MAPS_Entities.FK_Character_Player">
             <End Role="Player" EntitySet="Players" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <EntitySet Name="Encounters" EntityType="DND_MAPS_Entities.Encounter" />
+          <EntitySet Name="Monsters" EntityType="DND_MAPS_Entities.Monster" />
+          <EntitySet Name="Encounter_Monster" EntityType="DND_MAPS_Entities.Encounter_Monster" />
+          <AssociationSet Name="EncounterEncounter_Monster" Association="DND_MAPS_Entities.EncounterEncounter_Monster">
+            <End Role="Encounter" EntitySet="Encounters" />
+            <End Role="Encounter_Monster" EntitySet="Encounter_Monster" />
+          </AssociationSet>
+          <AssociationSet Name="MonsterEncounter_Monster" Association="DND_MAPS_Entities.MonsterEncounter_Monster">
+            <End Role="Monster" EntitySet="Monsters" />
+            <End Role="Encounter_Monster" EntitySet="Encounter_Monster" />
+          </AssociationSet>
+          <EntitySet Name="Encounter_Character" EntityType="DND_MAPS_Entities.Encounter_Character" />
+          <AssociationSet Name="EncounterEncounter_Character" Association="DND_MAPS_Entities.EncounterEncounter_Character">
+            <End Role="Encounter" EntitySet="Encounters" />
+            <End Role="Encounter_Character" EntitySet="Encounter_Character" />
+          </AssociationSet>
+          <AssociationSet Name="Encounter_CharacterCharacter" Association="DND_MAPS_Entities.Encounter_CharacterCharacter">
+            <End Role="Encounter_Character" EntitySet="Encounter_Character" />
             <End Role="Character" EntitySet="Characters" />
           </AssociationSet>
         </EntityContainer>
@@ -76,6 +198,8 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
           <Property Name="Avatar_IMG" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Player" Relationship="DND_MAPS_Entities.FK_Character_Player" FromRole="Character" ToRole="Player" />
+          <NavigationProperty Name="Encounter_Character" Relationship="DND_MAPS_Entities.Encounter_CharacterCharacter" FromRole="Character" ToRole="Encounter_Character" />
+          <Property Name="Initative_Bonus" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="Map">
           <Key>
@@ -109,46 +233,169 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Encounter">
+          <Key>
+            <PropertyRef Name="Encounter_ID" />
+          </Key>
+          <Property Name="Encounter_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Encounter_Monster" Relationship="DND_MAPS_Entities.EncounterEncounter_Monster" FromRole="Encounter" ToRole="Encounter_Monster" />
+          <NavigationProperty Name="Encounter_Character" Relationship="DND_MAPS_Entities.EncounterEncounter_Character" FromRole="Encounter" ToRole="Encounter_Character" />
+        </EntityType>
+        <EntityType Name="Monster">
+          <Key>
+            <PropertyRef Name="Monster_ID" />
+          </Key>
+          <Property Name="Monster_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Avatar_IMG" Type="String" Nullable="false" />
+          <NavigationProperty Name="Encounter_Monster" Relationship="DND_MAPS_Entities.MonsterEncounter_Monster" FromRole="Monster" ToRole="Encounter_Monster" />
+        </EntityType>
+        <EntityType Name="Encounter_Monster">
+          <Key>
+            <PropertyRef Name="Monster_ID" />
+            <PropertyRef Name="Encounter_ID" />
+          </Key>
+          <NavigationProperty Name="Encounter" Relationship="DND_MAPS_Entities.EncounterEncounter_Monster" FromRole="Encounter_Monster" ToRole="Encounter" />
+          <Property Name="Encounter_ID" Nullable="false" Type="Int32" />
+          <NavigationProperty Name="Monster" Relationship="DND_MAPS_Entities.MonsterEncounter_Monster" FromRole="Encounter_Monster" ToRole="Monster" />
+          <Property Name="Monster_ID" Nullable="false" Type="Int32" />
+          <Property Name="Initiative" Type="Int16" Nullable="false" />
+        </EntityType>
+        <Association Name="EncounterEncounter_Monster">
+          <End Type="DND_MAPS_Entities.Encounter" Role="Encounter" Multiplicity="1" />
+          <End Type="DND_MAPS_Entities.Encounter_Monster" Role="Encounter_Monster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Encounter">
+              <PropertyRef Name="Encounter_ID" />
+            </Principal>
+            <Dependent Role="Encounter_Monster">
+              <PropertyRef Name="Encounter_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MonsterEncounter_Monster">
+          <End Type="DND_MAPS_Entities.Monster" Role="Monster" Multiplicity="1" />
+          <End Type="DND_MAPS_Entities.Encounter_Monster" Role="Encounter_Monster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Monster">
+              <PropertyRef Name="Monster_ID" />
+            </Principal>
+            <Dependent Role="Encounter_Monster">
+              <PropertyRef Name="Monster_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Encounter_Character">
+          <Key>
+            <PropertyRef Name="Encounter_ID" />
+            <PropertyRef Name="Character_ID" />
+          </Key>
+          <NavigationProperty Name="Encounter" Relationship="DND_MAPS_Entities.EncounterEncounter_Character" FromRole="Encounter_Character" ToRole="Encounter" />
+          <Property Name="Encounter_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Character" Relationship="DND_MAPS_Entities.Encounter_CharacterCharacter" FromRole="Encounter_Character" ToRole="Character" />
+          <Property Name="Character_ID" Type="Int32" Nullable="false" />
+          <Property Name="Initiative" Type="Int16" Nullable="false" />
+        </EntityType>
+        <Association Name="EncounterEncounter_Character">
+          <End Type="DND_MAPS_Entities.Encounter" Role="Encounter" Multiplicity="1" />
+          <End Type="DND_MAPS_Entities.Encounter_Character" Role="Encounter_Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Encounter">
+              <PropertyRef Name="Encounter_ID" />
+            </Principal>
+            <Dependent Role="Encounter_Character">
+              <PropertyRef Name="Encounter_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Encounter_CharacterCharacter">
+          <End Type="DND_MAPS_Entities.Encounter_Character" Role="Encounter_Character" Multiplicity="*" />
+          <End Type="DND_MAPS_Entities.Character" Role="Character" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Character_ID" />
+            </Principal>
+            <Dependent Role="Encounter_Character">
+              <PropertyRef Name="Character_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DND_MAPS_EntitiesStoreContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="Characters">
-            <EntityTypeMapping TypeName="DND_MAPS_Entities.Character">
-              <MappingFragment StoreEntitySet="Character">
-                <ScalarProperty Name="Character_ID" ColumnName="Character_ID" />
-                <ScalarProperty Name="Player_ID" ColumnName="Player_ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Avatar_IMG" ColumnName="Avatar_IMG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Maps">
-            <EntityTypeMapping TypeName="DND_MAPS_Entities.Map">
-              <MappingFragment StoreEntitySet="Map">
-                <ScalarProperty Name="Map_ID" ColumnName="Map_ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Background_IMG_Path" ColumnName="Background_IMG_Path" />
-                <ScalarProperty Name="Width_Squares" ColumnName="Width_Squares" />
-                <ScalarProperty Name="Height_Squares" ColumnName="Height_Squares" />
-                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Players">
-            <EntityTypeMapping TypeName="DND_MAPS_Entities.Player">
-              <MappingFragment StoreEntitySet="Player">
-                <ScalarProperty Name="Player_ID" ColumnName="Player_ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DND_MAPS_EntitiesStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Characters">
+      <EntityTypeMapping TypeName="IsTypeOf(DND_MAPS_Entities.Character)">
+        <MappingFragment StoreEntitySet="Characters">
+          <ScalarProperty Name="Character_ID" ColumnName="Character_ID" />
+          <ScalarProperty Name="Player_ID" ColumnName="Player_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Avatar_IMG" ColumnName="Avatar_IMG" />
+          <ScalarProperty Name="Initative_Bonus" ColumnName="Initative_Bonus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maps">
+      <EntityTypeMapping TypeName="IsTypeOf(DND_MAPS_Entities.Map)">
+        <MappingFragment StoreEntitySet="Maps">
+          <ScalarProperty Name="Map_ID" ColumnName="Map_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Background_IMG_Path" ColumnName="Background_IMG_Path" />
+          <ScalarProperty Name="Width_Squares" ColumnName="Width_Squares" />
+          <ScalarProperty Name="Height_Squares" ColumnName="Height_Squares" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="IsTypeOf(DND_MAPS_Entities.Player)">
+        <MappingFragment StoreEntitySet="Players">
+          <ScalarProperty Name="Player_ID" ColumnName="Player_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Encounters">
+      <EntityTypeMapping TypeName="IsTypeOf(DND_MAPS_Entities.Encounter)">
+        <MappingFragment StoreEntitySet="Encounters">
+          <ScalarProperty Name="Encounter_ID" ColumnName="Encounter_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Monsters">
+      <EntityTypeMapping TypeName="IsTypeOf(DND_MAPS_Entities.Monster)">
+        <MappingFragment StoreEntitySet="Monsters">
+          <ScalarProperty Name="Monster_ID" ColumnName="Monster_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Avatar_IMG" ColumnName="Avatar_IMG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Encounter_Monster">
+      <EntityTypeMapping TypeName="IsTypeOf(DND_MAPS_Entities.Encounter_Monster)">
+        <MappingFragment StoreEntitySet="Encounter_Monster">
+          <ScalarProperty Name="Monster_ID" ColumnName="Monster_ID" />
+          <ScalarProperty Name="Encounter_ID" ColumnName="Encounter_ID" />
+          <ScalarProperty Name="Initiative" ColumnName="Initiative" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Encounter_Character">
+      <EntityTypeMapping TypeName="IsTypeOf(DND_MAPS_Entities.Encounter_Character)">
+        <MappingFragment StoreEntitySet="Encounter_Character">
+          <ScalarProperty Name="Encounter_ID" ColumnName="Encounter_ID" />
+          <ScalarProperty Name="Character_ID" ColumnName="Character_ID" />
+          <ScalarProperty Name="Initiative" ColumnName="Initiative" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -163,6 +410,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

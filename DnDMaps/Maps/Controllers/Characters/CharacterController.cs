@@ -13,7 +13,7 @@ namespace Maps.Controllers.Characters
 {
     public class CharacterController : Controller
     {
-        private DND_MAPS_Entities db = new DND_MAPS_Entities();
+        private Entities db = new Entities();
 
         //
         // GET: /Character/

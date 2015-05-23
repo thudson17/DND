@@ -26,6 +26,8 @@ namespace Maps.Models
         [DisplayName("Player ID")]
         public int PlayerID { get; set; }
 
-
+        [Required]
+        [DisplayName("Initative Bonus")]
+        public short Initative_Bonus { get; set; }
     }
 }

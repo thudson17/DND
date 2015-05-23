@@ -13,10 +13,10 @@ namespace Maps.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DND_MAPS_Entities : DbContext
+    public partial class Entities : DbContext
     {
-        public DND_MAPS_Entities()
-            : base("name=DND_MAPS_Entities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -28,5 +28,9 @@ namespace Maps.Models
         public DbSet<Character> Characters { get; set; }
         public DbSet<Map> Maps { get; set; }
         public DbSet<Player> Players { get; set; }
+        public DbSet<Encounter> Encounters { get; set; }
+        public DbSet<Monster> Monsters { get; set; }
+        public DbSet<Encounter_Monster> Encounter_Monster { get; set; }
+        public DbSet<Encounter_Character> Encounter_Character { get; set; }
     }
 }

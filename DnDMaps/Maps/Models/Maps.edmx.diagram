@@ -9,6 +9,14 @@
         <EntityTypeShape EntityType="DND_MAPS_Entities.Map" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DND_MAPS_Entities.Player" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="DND_MAPS_Entities.FK_Character_Player" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DND_MAPS_Entities.Encounter" Width="1.875" PointX="9.5" PointY="0.875" />
+        <EntityTypeShape EntityType="DND_MAPS_Entities.Monster" Width="1.875" PointX="6.125" PointY="4.125" />
+        <EntityTypeShape EntityType="DND_MAPS_Entities.Encounter_Monster" Width="2" PointX="9.5" PointY="4.125" />
+        <AssociationConnector Association="DND_MAPS_Entities.EncounterEncounter_Monster" />
+        <AssociationConnector Association="DND_MAPS_Entities.MonsterEncounter_Monster" />
+        <EntityTypeShape EntityType="DND_MAPS_Entities.Encounter_Character" Width="2" PointX="6.125" PointY="0.75" />
+        <AssociationConnector Association="DND_MAPS_Entities.EncounterEncounter_Character" />
+        <AssociationConnector Association="DND_MAPS_Entities.Encounter_CharacterCharacter" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

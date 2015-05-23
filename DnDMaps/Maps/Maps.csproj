@@ -170,14 +170,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Characters\CharacterController.cs" />
+    <Compile Include="Controllers\Encounters\EncounterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Maps\MapController.cs" />
+    <Compile Include="Controllers\Monsters\MonsterController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Character.cs">
+      <DependentUpon>Maps.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Encounter.cs">
+      <DependentUpon>Maps.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Encounter_Character.cs">
+      <DependentUpon>Maps.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Encounter_Monster.cs">
       <DependentUpon>Maps.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Map.cs">
@@ -198,9 +209,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Maps.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Monster.cs">
+      <DependentUpon>Maps.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Player.cs">
       <DependentUpon>Maps.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\vmBattle.cs" />
+    <Compile Include="Models\vmMonster.cs" />
+    <Compile Include="Models\vmEncounter.cs" />
     <Compile Include="Models\vmCharacter.cs" />
     <Compile Include="Models\vmMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -288,6 +305,7 @@
     <Content Include="Models\Maps.edmx.diagram">
       <DependentUpon>Maps.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\Maps.edmx.sql" />
     <Content Include="Models\Maps.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Maps.edmx</DependentUpon>
@@ -371,10 +389,20 @@
     <Content Include="Views\Character\Create.cshtml" />
     <Content Include="Views\Character\Edit.cshtml" />
     <Content Include="Views\Character\Delete.cshtml" />
+    <Content Include="Views\Monster\Index.cshtml" />
+    <Content Include="Views\Monster\Create.cshtml" />
+    <Content Include="Views\Monster\Edit.cshtml" />
+    <Content Include="Views\Monster\Delete.cshtml" />
+    <Content Include="Views\Encounter\Create.cshtml" />
+    <Content Include="Views\Encounter\Delete.cshtml" />
+    <Content Include="Views\Encounter\Edit.cshtml" />
+    <Content Include="Views\Encounter\Index.cshtml" />
+    <Content Include="Views\Encounter\Battle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploaded Maps\" />
+    <Folder Include="Uploaded Monsters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

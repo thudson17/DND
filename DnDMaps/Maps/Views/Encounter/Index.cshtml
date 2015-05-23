@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Maps.Models.vmEncounter>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>#Encounters</h2>
+
+<p>
+    @Html.ActionLink("Create Encounter", "Create", null, new { Class = "play_button" })
+</p>
+
+<div style="height: 500px; overflow: auto;">
+
+
+
+    <table class="maple_listing">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+        @if(Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+
+                    <td style="width: 40%;">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Enter Battle", "StartEncounter", new { encounterId = item.Encounter_ID }, new { Class = "play_button" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Encounter_ID }, new { Class = "delete_button", Style = "margin-right:25px;" })
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>

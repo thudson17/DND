@@ -1,0 +1,72 @@
+﻿@model Maps.Models.vmBattle
+
+@{
+    ViewBag.Title = "Battle";
+}
+
+<h2>#Battle Mode</h2>
+
+<p>
+    @Html.ActionLink("Retreat like a poussy M8", "Index", null, new { Class = "play_button" })
+</p>
+
+<div style="height: 500px; overflow: auto;">
+
+
+
+    <table class="maple_listing">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>Initiative</th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            int Init = 100;
+            while (Init > -2)
+            { 
+                foreach (var item in Model.PlayerInit)
+                {
+                    if (Convert.ToInt32(item.Initiative) == Init)
+                    { 
+                        <tr>
+
+                            <td style="width: 40%;">
+                                @Html.DisplayFor(modelItem => item.Character.Name)
+                            </td>
+                            <td style="width: 40%;">
+                                @Html.DisplayFor(modelItem => item.Initiative)
+                            </td>
+                            <td style="width: 40%;">
+ 
+                            </td>
+                        </tr>
+                    }
+                }
+                foreach (var monster in Model.MonsterInit)
+                {
+                    if (Convert.ToInt32(monster.Initiative) == Init)
+                    { 
+                        <tr>
+                            <td style="width: 40%;">
+                                @Html.DisplayFor(modelItem => monster.Monster.Name)
+                            </td>
+                            <td style="width: 40%;">
+                                @Html.DisplayFor(modelItem => monster.Initiative)
+                            </td>
+                            <td style="width: 40%;"></td>
+                        </tr>
+                    }
+                }
+                Init--;
+            }
+        }
+
+    </table>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

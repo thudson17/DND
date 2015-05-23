@@ -262,12 +262,12 @@ namespace Maps.Controllers
 
         private short RollInitative(int playerBonus = 0)
         {
-            Random rnd = new Random();
+            Random rnd = new Random(Guid.NewGuid().GetHashCode());
 
-            int roll = rnd.Next(1, 20);
-            for (int i = 0; i > rnd.Next(1, 20); i++)
+            int roll = rnd.Next(1, 21);
+            for (int i = 0; i > rnd.Next(1, 21); i++)
             {
-                roll = rnd.Next(1, 20);
+                roll = rnd.Next(1, 21);
             }
 
             roll = roll + playerBonus;

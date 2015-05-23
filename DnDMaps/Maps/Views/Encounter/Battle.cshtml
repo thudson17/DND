@@ -11,9 +11,6 @@
 </p>
 
 <div style="height: 500px; overflow: auto;">
-
-
-
     <table class="maple_listing" id="battleTable" name="battleTable">
         <tr>
 
@@ -25,7 +22,7 @@
         </tr>
         @if (Model != null)
         {
-            int currentEndTurnButton = 0;
+            int totalTurns = Model.PlayerTeam.Count + Model.MonsterTeam.Count;
             int Init = 100;
             while (Init > -2)
             {
@@ -42,7 +39,7 @@
                                 @Html.DisplayFor(modelItem => item.Initiative) (@Html.DisplayFor(modelItem => item.Character.Initative_Bonus))
                             </td>
                             <td style="width: 40%;">
-                                <input style="display:none" type="button" value="End Turn" />
+                                <input class="endTurnButton" onclick="$(this).toggle(); EndTurn(@totalTurns);" type="button" value="End Turn" />
                             </td>
                         </tr>
                     }
@@ -59,7 +56,7 @@
                                 @Html.DisplayFor(modelItem => monster.Initiative)
                             </td>
                             <td style="width: 40%;">
-                                <input id="button" type="button" value="End Turn" />
+                                <input class="endTurnButton" onclick="$(this).toggle(); EndTurn(@totalTurns);" type="button" value="End Turn" />
                             </td>
                         </tr>
                     }
@@ -73,11 +70,16 @@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-
     <script>
         function EndTurn()
         {
-            
+            if($(".endTurnButton").filter(':visible').length <= 0)
+            {
+                for (j = 0; j < $(".endTurnButton").length; j++)
+                {
+                    $(".endTurnButton")[j].style.display = '';
+                }
+            }
         }
     </script>
 }

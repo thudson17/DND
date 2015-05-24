@@ -269,7 +269,15 @@ namespace Maps.Controllers
             int playerRoll = rnd.Next(1, 21);
 
             //Add the player init bonus and return
-            return Convert.ToInt16(playerRoll + playerBonus);
+            short finalResult = Convert.ToInt16(playerRoll + playerBonus);
+
+            //If init rolled was lower than 0, set to 0 because init can't go below 0.
+            if(finalResult < 0)
+            {
+                finalResult = 0;
+            }
+
+            return finalResult;
         }
     }
 }

@@ -14,25 +14,25 @@ namespace Maps.Controllers
 {
     public class MapController : Controller
     {
-        private DND_MAPS_Entities db = new DND_MAPS_Entities(); //database context class, should be cleaned up on de-struct
+        private Entities db = new Entities(); //database context class, should be cleaned up on de-struct
 
         //
         // GET: /Map/
         // "Root" / Listing Page for any maps..
         public ActionResult Index()
         {
-            try
-            {
+            //try
+            //{
                 Mapper.CreateMap<Map, vmMap>(); //auto map entity model to view model
 
                 var model = db.Maps.ToList();
 
                 return View(Mapper.Map(model, new List<vmMap>()));
-            }
-            catch (Exception)
-            {
-                return View();
-            }
+            //}
+            //catch (Exception)
+            //{
+                //return View();
+            //}
         }
 
         //PLAY the Map :)

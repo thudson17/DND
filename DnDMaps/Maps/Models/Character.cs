@@ -11,25 +11,21 @@ namespace Maps.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
-    [Serializable]
+    
     public partial class Character
     {
-        [DisplayName("Character Identifier")]
+        public Character()
+        {
+            this.Encounter_Character = new HashSet<Encounter_Character>();
+        }
+    
         public int Character_ID { get; set; }
-
-        [DisplayName("Player")]
-        [Required]
         public int Player_ID { get; set; }
-
-        [Required]
         public string Name { get; set; }
-
-        [DisplayName("Avatar")]
         public string Avatar_IMG { get; set; }
-
+        public short Initative_Bonus { get; set; }
+    
         public virtual Player Player { get; set; }
+        public virtual ICollection<Encounter_Character> Encounter_Character { get; set; }
     }
 }

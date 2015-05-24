@@ -29,30 +29,32 @@
 
             <th></th>
         </tr>
-
-        @foreach (var item in Model)
+        @if(Model != null)
         {
-            <tr>
+            foreach (var item in Model)
+            {
+                <tr>
 
-                <td style="width: 40%;">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Width_Squares)
-                    x
-              @Html.DisplayFor(modelItem => item.Height_Squares)
-                </td>
+                    <td style="width: 40%;">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Width_Squares)
+                        x
+                  @Html.DisplayFor(modelItem => item.Height_Squares)
+                    </td>
 
 
 
 
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Map_ID }, new { Class = "play_button" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Map_ID }, new { Class = "delete_button", Style = "margin-right:25px;" })
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Map_ID }, new { Class = "play_button" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Map_ID }, new { Class = "delete_button", Style = "margin-right:25px;" })
 
-                    @Html.ActionLink("Play That Shit >>", "Play", new { id = item.Map_ID }, new { Class = "play_button", target = "_blank" })
-                </td>
-            </tr>
+                        @Html.ActionLink("Play That Shit >>", "Play", new { id = item.Map_ID }, new { Class = "play_button", target = "_blank" })
+                    </td>
+                </tr>
+            }
         }
 
     </table>

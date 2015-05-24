@@ -1,0 +1,85 @@
+﻿@model Maps.Models.vmBattle
+
+@{
+    ViewBag.Title = "Battle";
+}
+
+<h2>#Battle Mode</h2>
+
+<p>
+    @Html.ActionLink("Retreat is for the weak M8", "Index", null, new { Class = "play_button" })
+</p>
+
+<div style="height: 500px; overflow: auto;">
+    <table class="maple_listing" id="battleTable" name="battleTable">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>Initiative</th>
+            <th>Current Turn</th>
+        </tr>
+        @if (Model != null)
+        {
+            int totalTurns = Model.PlayerTeam.Count + Model.MonsterTeam.Count;
+            int Init = 100;
+            while (Init > -2)
+            {
+                foreach (var item in Model.PlayerTeam)
+                {
+                    if (Convert.ToInt32(item.Initiative) == Init)
+                    {
+                        <tr>
+
+                            <td style="width: 40%;">
+                                @Html.DisplayFor(modelItem => item.Character.Name) (@Html.DisplayFor(modelItem => item.Character.Player.Name))
+                            </td>
+                            <td style="width: 40%;">
+                                @Html.DisplayFor(modelItem => item.Initiative) (@Html.DisplayFor(modelItem => item.Character.Initative_Bonus))
+                            </td>
+                            <td style="width: 40%;">
+                                <input class="endTurnButton" onclick="$(this).toggle(); EndTurn(@totalTurns);" type="button" value="End Turn" />
+                            </td>
+                        </tr>
+                    }
+                }
+                foreach (var monster in Model.MonsterTeam)
+                {
+                    if (Convert.ToInt32(monster.Initiative) == Init)
+                    {
+                        <tr>
+                            <td style="width: 40%;">
+                                @Html.DisplayFor(modelItem => monster.Monster.Name)
+                            </td>
+                            <td style="width: 40%;">
+                                @Html.DisplayFor(modelItem => monster.Initiative)
+                            </td>
+                            <td style="width: 40%;">
+                                <input class="endTurnButton" onclick="$(this).toggle(); EndTurn(@totalTurns);" type="button" value="End Turn" />
+                            </td>
+                        </tr>
+                    }
+                }
+                Init--;
+            }
+        }
+
+    </table>
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function EndTurn()
+        {
+            if($(".endTurnButton").filter(':visible').length <= 0)
+            {
+                for (j = 0; j < $(".endTurnButton").length; j++)
+                {
+                    $(".endTurnButton")[j].style.display = '';
+                }
+            }
+        }
+    </script>
+}

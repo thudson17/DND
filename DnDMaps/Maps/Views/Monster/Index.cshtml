@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Maps.Models.vmMonster>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>#Monsters</h2>
+
+<p>
+    @Html.ActionLink("Create Monster", "Create", null, new { Class = "play_button" })
+</p>
+
+<div style="height: 500px; overflow: auto;">
+
+
+
+    <table class="maple_listing">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>File Name</th>
+            <th></th>
+        </tr>
+        @if(Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+
+                    <td style="width: 40%;">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Avatar_IMG)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Monster_ID }, new { Class = "play_button" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Monster_ID }, new { Class = "delete_button", Style = "margin-right:25px;" })
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>

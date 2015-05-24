@@ -1,0 +1,52 @@
+﻿@model Maps.Models.vmEncounter
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit #Encounter</h2>
+<br />
+<br />
+
+@using (Html.BeginForm("Edit", "Encounter", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.Encounter_ID)
+    
+    <fieldset>
+        <legend>Map</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PlayerTeam)
+        </div>
+        <div class="editor-field">
+            @Html.ListBox("playerIds", (MultiSelectList)Model.GetCharacterListItems(), new { style = "width:300px;height:150px;" })
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MonsterTeam)
+        </div>
+        <div class="editor-field">
+            @Html.ListBox("monsterIds", (MultiSelectList)Model.GetMonsterListItems(), new { style = "width:300px;height:150px;" })
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Encounter")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

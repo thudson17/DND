@@ -23,8 +23,8 @@
         @if (Model != null)
         {
             int totalTurns = Model.PlayerTeam.Count + Model.MonsterTeam.Count;
-            int Init = 100;
-            while (Init > -2)
+            int Init = 40;
+            while (Init >= 0)
             {
                 foreach (var item in Model.PlayerTeam)
                 {

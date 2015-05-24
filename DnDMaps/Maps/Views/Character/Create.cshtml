@@ -46,7 +46,13 @@
 
         </div>
 
-
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Initative_Bonus)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Initative_Bonus)
+            @Html.ValidationMessageFor(model => model.Initative_Bonus)
+        </div>
 
         <p>
             <input type="submit" value="Create" />

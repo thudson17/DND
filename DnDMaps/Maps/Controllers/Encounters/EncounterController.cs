@@ -65,7 +65,7 @@ namespace Maps.Controllers
                     Encounter_Character tmpChar = new Encounter_Character();
                     tmpChar.Character_ID = selectedCharacter.Character_ID;
                     tmpChar.Encounter_ID = newEncounter.Encounter_ID;
-                    tmpChar.Initiative = -1;
+                    tmpChar.Initiative = 0;
 
                     db.Encounter_Character.Add(tmpChar);
                 }
@@ -78,7 +78,7 @@ namespace Maps.Controllers
                     Encounter_Monster tmpMonster = new Encounter_Monster();
                     tmpMonster.Monster_ID = selectedMonster.Monster_ID;
                     tmpMonster.Encounter_ID = newEncounter.Encounter_ID;
-                    tmpMonster.Initiative = -1;
+                    tmpMonster.Initiative = 0;
 
                     db.Encounter_Monster.Add(tmpMonster);
                 }
@@ -262,17 +262,14 @@ namespace Maps.Controllers
 
         private short RollInitative(int playerBonus = 0)
         {
+            //Seed RND with random guid hash
             Random rnd = new Random(Guid.NewGuid().GetHashCode());
 
-            int roll = rnd.Next(1, 21);
-            for (int i = 0; i > rnd.Next(1, 21); i++)
-            {
-                roll = rnd.Next(1, 21);
-            }
+            //Roll 
+            int playerRoll = rnd.Next(1, 21);
 
-            roll = roll + playerBonus;
-
-            return Convert.ToInt16(roll);
+            //Add the player init bonus and return
+            return Convert.ToInt16(playerRoll + playerBonus);
         }
     }
 }

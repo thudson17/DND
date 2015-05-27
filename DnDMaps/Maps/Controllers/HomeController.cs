@@ -16,5 +16,10 @@ namespace Maps.Controllers
             return RedirectToAction("Index", "Map");
         }
 
+
+        public ActionResult KnowledgeBase()
+        {
+            return View();
+        }
     }
 }

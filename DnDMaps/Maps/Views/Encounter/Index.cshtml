@@ -34,7 +34,7 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.ActionLink("Enter Battle", "StartEncounter", new { encounterId = item.Encounter_ID }, new { Class = "play_button" })
+                        @Html.ActionLink("Enter Battle", "StartEncounter", new { encounterId = item.Encounter_ID }, new { Class = "play_button", target = "_blank" })
                     </td>
                     <td>
                         @Html.ActionLink("Delete", "Delete", new { id = item.Encounter_ID }, new { Class = "delete_button", Style = "margin-right:25px;" })

@@ -99,6 +99,7 @@ namespace Maps.Controllers.Characters
         {
             if (ModelState.IsValid)
             {
+                Character dbRecord = db.Characters.Find(character.Character_ID);
 
                 if (Avatar_IMG_Upload != null && Avatar_IMG_Upload.ContentLength > 0)
                 {
@@ -119,7 +120,8 @@ namespace Maps.Controllers.Characters
                     character.Avatar_IMG = db.Characters.Find(character.Character_ID).Avatar_IMG;
                 }
 
-                db.Entry(character).State = EntityState.Modified;
+                //db.Entry(character).State = EntityState.Modified;
+                db.Entry(dbRecord).CurrentValues.SetValues(character);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -398,6 +398,7 @@
     <Content Include="Views\Encounter\Edit.cshtml" />
     <Content Include="Views\Encounter\Index.cshtml" />
     <Content Include="Views\Encounter\Battle.cshtml" />
+    <Content Include="Views\Home\KnowledgeBase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

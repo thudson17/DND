@@ -40,8 +40,82 @@
     <h3>Game Knowledge</h3>
     <ul>
         <li>
-            <b>Party Combat Roles</b> <input type="button" value="Details" onclick="$('#entry_1').toggle()" />
+            <b>Actions During Your Turn</b> <input type="button" value="Details" onclick="$('#entry_1').toggle()" />
             <div id="entry_1" style="display:none">
+                During each of your turns you may perform a Standard Action, a Minor Action and a Move Action (One of each).<br/>
+                Using spells or abilities of your character may use actions, the action used will be listed on the Spell.<br />
+                In addition to your character's abilities, any character may attempt to perform any of the actions listed below:
+                <br/><br/>
+                <b>Move Actions</b>
+                <br />
+                <ul>
+                    <li>Crawl - While prone, move up to half your speed (rounded down)</li>
+                    <li>Escape - Escape a Grab and Shift 1 Square</li>
+                    <li>Run - Move your speed + 2, but grant combat advanatage until next turn</li>
+                    <li>Stand Up - Stand from prone</li>
+                    <li>Shift - Move 1 square without provoking opportunity attacks</li>
+                    <li>Squeeze - Reduce space occupied by half, move half your speed (rounded down) but grant combat advantage</li>
+                    <li>Walk - Move up to your speed</li>
+                </ul>
+                <br /><br />
+                <b>Minor Actions</b>
+                <br />
+                <ul>
+                    <li>Draw or Sheathe a Weapon - Draw or Sheathe a Weapon</li>
+                    <li>Drink a Potion - Consume a Potion</li>
+                    <li>Drop Prone - Drop down so that you are lying on the ground</li>
+                    <li>Load a Crossbow - Load a crossbow so that you may fire it</li>
+                    <li>Open or Close a Door - Open or Close a Door that is not locked or stuck</li>
+                    <li>Pick Up an Item - Pick up an object in your square, or an unoccupied square within reach</li>
+                    <li>Retrieve or Stow an Item - Retrieve or Stow an Item on your character</li>
+                </ul>
+                <br /><br />
+                <b>Standard Actions</b>
+                <br />
+                <ul>
+                    <li>Administer a Potion - Help an unconscious creature consume a potion</li>
+                    <li>Aid Another - Improve an ally's attack roll, defense, skill check or ability check</li>
+                    <li>Basic Attack - Make a Basic Melee or Ranged Attack</li>
+                    <li>Bull Rush - Push a target 1 square and shift into the vacated space</li>
+                    <li>Charge - Move in a straight line then make a Basic Melee Attack or Bull Rush</li>
+                    <li>Coup de Grace - Automatically score a Critical Hit against a helpless enemy</li>
+                    <li>Equip or Stow a Shield - Use a shield or put it away</li>
+                    <li>Grab - Grab an enemy</li>
+                    <li>Ready an Action - Ready an action to perform when a specified trigger occurs</li>
+                    <li>Second Wind - Spend a Healing Surge and a gaina bonus to defenses (Once per Encounter)</li>
+                    <li>Total Defense - Gain a +2 bonus to all defenses until start of your next turn</li>
+                </ul>
+                <br/><br/>
+                Additionally, there are a few other types of actions that occur in special scenarios:
+                <br/><br/>
+                <b>Immediate Actions</b>
+                <br />
+                <ul>
+                    <li>Readied Action - Perform an action as specified by 'Ready an Action' when the trigger occurs</li>
+                </ul>
+                <b>Opportunity Actions</b>
+                <br />
+                <ul>
+                    <li>Opportunity Attack - Make a Basic Attack against the enemy provoking the opportunity attack (Once per opponent's turn)</li>
+                </ul>
+                <b>Free Actions</b>
+                <br />
+                <ul>
+                    <li>Drop Held Items - Drop any items you currently hold</li>
+                    <li>End a Grab - Release an enemy from a grab</li>
+                    <li>Spend an Action Point - Take 1 extra Move, Minor or Standard action during your turn. (Once per Encounter, Not in Surprise Round)</li>
+                    <li>Talk - Speak a few sentences. (Less than 15 seconds of speech)</li>
+                </ul>
+                <b>No Action</b>
+                <br />
+                <ul>
+                    <li>Delay - Put off your turn until later in the Initative Order</li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <b>Party Combat Roles</b> <input type="button" value="Details" onclick="$('#entry_2').toggle()" />
+            <div id="entry_2" style="display:none">
                 <b>Striker - Rangers, Rogues</b>
                 <br />
                 <ul>
@@ -75,7 +149,7 @@
                     <li>Support your defenders when outnumbered, or help strikers deal damage when facing with tough enemies</li>
                     <li>Be vocal! Support classes are strong leaders, so lead the group by calling targets during combat</li>
                 </ul>
-                <br/>
+                <br />
                 <b>Defender - Fighters, Paladins</b>
                 <br />
                 <ul>

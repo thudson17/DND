@@ -285,6 +285,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Maps.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\Shopping_Resources\shopkeeper_armour.jpeg" />
+    <Content Include="Images\Shopping_Resources\shopkeeper_item.jpeg" />
     <Content Include="Images\Toolbox_Icons\bolt.png" />
     <Content Include="Images\Toolbox_Icons\brain.png" />
     <Content Include="Images\Toolbox_Icons\D&amp;D 4th Edition Icons #1.bmp" />
@@ -399,6 +401,7 @@
     <Content Include="Views\Encounter\Index.cshtml" />
     <Content Include="Views\Encounter\Battle.cshtml" />
     <Content Include="Views\Home\KnowledgeBase.cshtml" />
+    <Content Include="Views\Home\ShoppingGuide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

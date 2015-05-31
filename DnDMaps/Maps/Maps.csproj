@@ -287,6 +287,7 @@
     </EntityDeploy>
     <Content Include="Images\Shopping_Resources\shopkeeper_armour.jpeg" />
     <Content Include="Images\Shopping_Resources\shopkeeper_item.jpeg" />
+    <Content Include="Images\Shopping_Resources\shopkeeper_magic.jpeg" />
     <Content Include="Images\Toolbox_Icons\bolt.png" />
     <Content Include="Images\Toolbox_Icons\brain.png" />
     <Content Include="Images\Toolbox_Icons\D&amp;D 4th Edition Icons #1.bmp" />

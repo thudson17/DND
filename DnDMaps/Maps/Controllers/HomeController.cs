@@ -17,6 +17,12 @@ namespace Maps.Controllers
         }
 
 
+        public ActionResult ShoppingGuide()
+        {
+            return View();
+        }
+
+
         public ActionResult KnowledgeBase()
         {
             return View();

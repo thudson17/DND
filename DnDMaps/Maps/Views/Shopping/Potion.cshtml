@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Potion";
+}
+
+<h2>#Potion Shop @Html.ActionLink("Back to #Shopping", "Index", "Shopping", null, new { Class = "play_button", Style = "float:right" })</h2>
+
+<div style="height: 500px; overflow: auto;">
+    <div>
+        <div>
+            <img style="width:200px;height:200px;float:left;" src="~/Images/Shopping_Resources/shopkeeper_potions.jpeg" />
+            <p style="width:700px;float:right;">
+                *Long Awkward Silence*... I sense you were destined to come here today. Please take your time adventurer.
+            </p>
+        </div>
+        <br /><br />
+        <!-- Potions -->
+        <table style="width:100%">
+            <tr style="background-color:#dddddd">
+                <th>Potion</th>
+                <th>Cost (GP)</th>
+                <th>Description</th>
+                <th>Duration</th>
+            </tr>
+            <tr>
+                <td>Alter Appearance</td>
+                <td>50</td>
+                <td>Allows user to alter their appearence temporarily. Items carried are not affected.</td>
+                <td>1h</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Detect Magic</td>
+                <td>50</td>
+                <td>Grants user +10 to Arcana Checks</td>
+                <td>24h</td>
+            </tr>
+            <tr>
+                <td>Hide from Animals</td>
+                <td>50</td>
+                <td>Prevents Animals from detecting you in any fashion</td>
+                <td>24h</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Hide from Undead</td>
+                <td>50</td>
+                <td>Prevents Undead creatures from detecting you in any fashion</td>
+                <td>24h</td>
+            </tr>
+            <tr>
+                <td>Imbue Magic (Armour)</td>
+                <td>100</td>
+                <td>Grant +1 Bonus AC to a set of Armour, Single Use Only</td>
+                <td>Permanent</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Imbue Magic (Shield)</td>
+                <td>100</td>
+                <td>Grant +1 Shield Bonus to a Shield, Single Use Only</td>
+                <td>Permanent</td>
+            </tr>
+            <tr>
+                <td>Imbue Magic (Weapon)</td>
+                <td>100</td>
+                <td>Grant +1 to Attack and Damage Rolls, Single Use Only</td>
+                <td>Permanent</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Jump</td>
+                <td>50</td>
+                <td>Grants user +10 to Jump Checks</td>
+                <td>24h</td>
+            </tr>
+            <tr>
+                <td>Potion of Healing</td>
+                <td>50</td>
+                <td>Restores 10 HP as a Minor Action</td>
+                <td>Instant</td>
+            </tr>
+        </table>
+        <!-- End Potions -->
+        <br/><br/>
+        <!-- Potions -->
+        <table style="width:100%">
+            <tr style="background-color:#dddddd">
+                <th>Wonderous Items</th>
+                <th>Cost (GP)</th>
+                <th>Description</th>
+                <th>Requirements</th>
+            </tr>
+            <tr>
+                <td>Bag of Holding</td>
+                <td>1000</td>
+                <td>Holds up to 200Lbs or 20 cubic feet in volume, always weighs only 1 pound. Retrieving an item from the bag requires a Minor Action</td>
+                <td>Requires Level 5</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Everlasting Provisions</td>
+                <td>840</td>
+                <td>After an Extended Rest you may open the basket, creating enough food for 5 Medium Creatures for 24 Hours.</td>
+                <td>Requires Level 4</td>
+            </tr>
+        </table>
+        <!-- End Potions -->
+    </div>
+</div>

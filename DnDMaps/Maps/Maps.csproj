@@ -174,6 +174,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Maps\MapController.cs" />
     <Compile Include="Controllers\Monsters\MonsterController.cs" />
+    <Compile Include="Controllers\Shopping\ShoppingController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -288,6 +289,7 @@
     <Content Include="Images\Shopping_Resources\shopkeeper_armour.jpeg" />
     <Content Include="Images\Shopping_Resources\shopkeeper_item.jpeg" />
     <Content Include="Images\Shopping_Resources\shopkeeper_magic.jpeg" />
+    <Content Include="Images\Shopping_Resources\shopkeeper_potions.jpeg" />
     <Content Include="Images\Toolbox_Icons\bolt.png" />
     <Content Include="Images\Toolbox_Icons\brain.png" />
     <Content Include="Images\Toolbox_Icons\D&amp;D 4th Edition Icons #1.bmp" />
@@ -402,7 +404,11 @@
     <Content Include="Views\Encounter\Index.cshtml" />
     <Content Include="Views\Encounter\Battle.cshtml" />
     <Content Include="Views\Home\KnowledgeBase.cshtml" />
-    <Content Include="Views\Home\ShoppingGuide.cshtml" />
+    <Content Include="Views\Shopping\Magic.cshtml" />
+    <Content Include="Views\Shopping\Index.cshtml" />
+    <Content Include="Views\Shopping\Adventure.cshtml" />
+    <Content Include="Views\Shopping\Potion.cshtml" />
+    <Content Include="Views\Shopping\Weapon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

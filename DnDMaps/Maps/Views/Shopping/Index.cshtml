@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "#Shopping";
+}
+
+
+<h2>#Shopping</h2>
+
+<div style="height: 500px; overflow: auto;">
+    <table class="maple_listing">
+        <tr style="background-color:#dddddd">
+            <th>Shop</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td style="width: 40%;">
+                #Adventuring Shop
+            </td>
+            <td>
+                @Html.ActionLink("Enter Shop", "Adventure", null, new { Class = "play_button", target = "_blank" })
+            </td>
+        </tr>
+        <tr style="background-color:#dddddd">
+            <td style="width: 40%;">
+                #Magic Shop
+            </td>
+            <td>
+                @Html.ActionLink("Enter Shop", "Magic", null, new { Class = "play_button", target = "_blank" })
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 40%;">
+                #Potions Shop
+            </td>
+            <td>
+                @Html.ActionLink("Enter Shop", "Potion", null, new { Class = "play_button", target = "_blank" })
+            </td>
+        </tr>
+        <tr style="background-color:#dddddd">
+            <td style="width: 40%;">
+                #Weapons Shop
+            </td>
+            <td>
+                @Html.ActionLink("Enter Shop", "Weapon", null, new { Class = "play_button", target = "_blank" })
+            </td>
+        </tr>
+    </table>
+</div>

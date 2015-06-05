@@ -1,0 +1,380 @@
+﻿@{
+    ViewBag.Title = "Weapon";
+}
+
+<h2>#Weapon Shop @Html.ActionLink("Back to #Shopping", "Index", "Shopping", null, new { Class = "play_button", Style = "float:right" })</h2>
+
+<div style="height: 500px; overflow: auto;">
+    <div>
+        <div>
+            <img style="width:200px;height:200px;float:left;" src="~/Images/Shopping_Resources/shopkeeper_armour.jpeg" />
+            <p style="width:700px;float:right;">
+                Welcome, I'm Brandar Stork. Best Blacksmith in Emereal! Feel free to browse my shelves, but I can also forge many
+                other things for you. Keep the door closed behind you, the or the wretched fresh air will get in here.
+                <br /><br />
+                I should also inform you I'm not allowed to sell Military Gear to anyone without an Adventuring Liscense.
+            </p>
+        </div>
+        <br /><br />
+        <!--Simple Weapons-->
+        <table style="width:100%">
+            <tr style="background-color:#dddddd">
+                <th>Simple Melee Weapons</th>
+                <th>Type</th>
+                <th>Proficiency Bonus</th>
+                <th>Damage</th>
+                <th>Price (GP)</th>
+                <th>Group</th>
+                <th>Special</th>
+            </tr>
+            <tr>
+                <td>Dagger</td>
+                <td>One Handed</td>
+                <td>+3</td>
+                <td>1D4</td>
+                <td>1</td>
+                <td>Light Blade</td>
+                <td>Off Hand, Throwable</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Mace</td>
+                <td>One Handed</td>
+                <td>+2</td>
+                <td>1D8</td>
+                <td>5</td>
+                <td>Mace</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Short Spear</td>
+                <td>One Handed</td>
+                <td>+2</td>
+                <td>1D6</td>
+                <td>2</td>
+                <td>Spear</td>
+                <td>Off Hand, Throwable</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Great Club</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>2D4</td>
+                <td>1</td>
+                <td>Mace</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Morningstar</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>1D10</td>
+                <td>10</td>
+                <td>Mace</td>
+                <td></td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Quaterstaff</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>1D8</td>
+                <td>5</td>
+                <td>Staff</td>
+                <td></td>
+            </tr>
+        </table>
+        <!--End Simple Weapons-->
+        <br /><br />
+        <!--Military Weapons-->
+        <table style="width:100%">
+            <tr style="background-color:#dddddd">
+                <th>Military Melee Weapons</th>
+                <th>Type</th>
+                <th>Proficiency Bonus</th>
+                <th>Damage</th>
+                <th>Price (GP)</th>
+                <th>Group</th>
+                <th>Special</th>
+            </tr>
+            <tr>
+                <td>Battle Axe</td>
+                <td>One Handed</td>
+                <td>+2</td>
+                <td>1D10</td>
+                <td>15</td>
+                <td>Axe</td>
+                <td></td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Hand Axe</td>
+                <td>One Handed</td>
+                <td>+2</td>
+                <td>1D8</td>
+                <td>5</td>
+                <td>Axe</td>
+                <td>Off Hand, Throwable</td>
+            </tr>
+            <tr>
+                <td>Long Sword</td>
+                <td>One Handed</td>
+                <td>+3</td>
+                <td>1D8</td>
+                <td>15</td>
+                <td>Heavy Blade</td>
+                <td></td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Rapier</td>
+                <td>One Handed</td>
+                <td>+3</td>
+                <td>1D8</td>
+                <td>25</td>
+                <td>Light Blade</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Short Sword</td>
+                <td>One Handed</td>
+                <td>+3</td>
+                <td>1D6</td>
+                <td>10</td>
+                <td>Light Blade</td>
+                <td>Off Hand</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Warhammer</td>
+                <td>One Handed</td>
+                <td>+2</td>
+                <td>1D10</td>
+                <td>15</td>
+                <td>Hammer</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Falchion</td>
+                <td>Two Handed</td>
+                <td>+3</td>
+                <td>2D4</td>
+                <td>25</td>
+                <td>Heavy Blade</td>
+                <td>High Crit</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Greataxe</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>1D12</td>
+                <td>30</td>
+                <td>Axe</td>
+                <td>High Crit</td>
+            </tr>
+            <tr>
+                <td>Greatsword</td>
+                <td>Two Handed</td>
+                <td>+3</td>
+                <td>1D10</td>
+                <td>30</td>
+                <td>Heavy Blade</td>
+                <td></td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Halberd</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>1D10</td>
+                <td>25</td>
+                <td>Axe, Polearm</td>
+                <td>Reach</td>
+            </tr>
+            <tr>
+                <td>Longspear</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>1D10</td>
+                <td>10</td>
+                <td>Polearm, Spear</td>
+                <td>Reach</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Maul</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>2D6</td>
+                <td>30</td>
+                <td>Hammer</td>
+                <td></td>
+            </tr>
+        </table>
+        <!--End Military Weapons-->
+        <br /><br />
+        <!--Simple Ranged Weapons-->
+        <table style="width:100%">
+            <tr style="background-color:#dddddd">
+                <th>Simple Ranged Weapons</th>
+                <th>Type</th>
+                <th>Proficiency Bonus</th>
+                <th>Range</th>
+                <th>Damage</th>
+                <th>Price (GP)</th>
+                <th>Group</th>
+                <th>Special</th>
+            </tr>
+            <tr>
+                <td>Hand Crossbow</td>
+                <td>One Handed</td>
+                <td>+2</td>
+                <td>10/20</td>
+                <td>1D6</td>
+                <td>25</td>
+                <td>Crossbow</td>
+                <td>Load Free</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Sling</td>
+                <td>One Handed</td>
+                <td>+2</td>
+                <td>10/20</td>
+                <td>1D6</td>
+                <td>1</td>
+                <td>Sling</td>
+                <td>Load Free</td>
+            </tr>
+            <tr>
+                <td>Crossbow</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>15/30</td>
+                <td>1D8</td>
+                <td>25</td>
+                <td>Crossbow</td>
+                <td>Load Minor</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Repeating Crossbow</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>10/20</td>
+                <td>1D8</td>
+                <td>35</td>
+                <td>Crossbow</td>
+                <td>Load Free, Load Magazine Standard</td>
+            </tr>
+        </table>
+        <!--End Ranged Weapons-->
+        <br /><br />
+        <!--Military Ranged Weapons-->
+        <table style="width:100%">
+            <tr style="background-color:#dddddd">
+                <th>Military Ranged Weapons</th>
+                <th>Type</th>
+                <th>Proficiency Bonus</th>
+                <th>Range</th>
+                <th>Damage</th>
+                <th>Price (GP)</th>
+                <th>Group</th>
+                <th>Special</th>
+            </tr>
+            <tr>
+                <td>Longbow</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>20/40</td>
+                <td>1D10</td>
+                <td>30</td>
+                <td>Bow</td>
+                <td>Load Free</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Shortbow</td>
+                <td>Two Handed</td>
+                <td>+2</td>
+                <td>15/30</td>
+                <td>1D6</td>
+                <td>25</td>
+                <td>Bow</td>
+                <td>Load Free</td>
+            </tr>
+        </table>
+        <!--End Ranged Weapons-->
+        <br /><br />
+        <!--Armour-->
+        <table style="width:100%">
+            <tr style="background-color:#dddddd">
+                <th>Armour</th>
+                <th>AC Bonus</th>
+                <th>Check Penalty</th>
+                <th>Speed Penalty</th>
+                <th>Price (GP)</th>
+            </tr>
+            <tr>
+                <td>Cloth Armour (Clothing)</td>
+                <td>+0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Leather Armour</td>
+                <td>+2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>Hide Armour</td>
+                <td>+3</td>
+                <td>-1</td>
+                <td>0</td>
+                <td>30</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Chainmail Armour</td>
+                <td>+6</td>
+                <td>-1</td>
+                <td>-1</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>Scale Armour</td>
+                <td>+7</td>
+                <td>0</td>
+                <td>-1</td>
+                <td>45</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Plate Armour</td>
+                <td>+8</td>
+                <td>-2</td>
+                <td>-1</td>
+                <td>50</td>
+            </tr>
+        </table>
+        <!--End Armour-->
+        <br />
+        <br />
+        <!--Shields-->
+        <table style="width:100%">
+            <tr style="background-color:#dddddd">
+                <th>Shields</th>
+                <th>Shield Bonus</th>
+                <th>Check Penalty</th>
+                <th>Speed Penalty</th>
+                <th>Price (GP)</th>
+            </tr>
+            <tr>
+                <td>Light Shield</td>
+                <td>+1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>5</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Heavy Shield</td>
+                <td>+2</td>
+                <td>-2</td>
+                <td>0</td>
+                <td>10</td>
+            </tr>
+        </table>
+        <!--End Shields-->
+    </div>
+</div>

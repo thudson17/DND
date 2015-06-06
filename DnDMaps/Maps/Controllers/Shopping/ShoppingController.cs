@@ -21,20 +21,27 @@ namespace Maps.Controllers.Shopping
             return View();
         }
 
+        public ActionResult Blacksmith()
+        {
+            return View();
+        }
+
         public ActionResult Magic()
         {
             return View();
         }
 
-        public ActionResult Potion()
+        public ActionResult Tailor()
         {
             return View();
         }
 
-        public ActionResult Weapon()
+        public ActionResult Witch()
         {
             return View();
         }
+
+        
 
     }
 }

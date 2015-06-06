@@ -286,10 +286,11 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Maps.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Images\Shopping_Resources\shopkeeper_armour.jpeg" />
+    <Content Include="Images\Shopping_Resources\shopkeeper_blacksmith.jpeg" />
     <Content Include="Images\Shopping_Resources\shopkeeper_item.jpeg" />
     <Content Include="Images\Shopping_Resources\shopkeeper_magic.jpeg" />
-    <Content Include="Images\Shopping_Resources\shopkeeper_potions.jpeg" />
+    <Content Include="Images\Shopping_Resources\shopkeeper_witch.jpeg" />
+    <Content Include="Images\Shopping_Resources\shopkeeper_tailor.jpeg" />
     <Content Include="Images\Toolbox_Icons\bolt.png" />
     <Content Include="Images\Toolbox_Icons\brain.png" />
     <Content Include="Images\Toolbox_Icons\D&amp;D 4th Edition Icons #1.bmp" />
@@ -407,8 +408,9 @@
     <Content Include="Views\Shopping\Magic.cshtml" />
     <Content Include="Views\Shopping\Index.cshtml" />
     <Content Include="Views\Shopping\Adventure.cshtml" />
-    <Content Include="Views\Shopping\Potion.cshtml" />
-    <Content Include="Views\Shopping\Weapon.cshtml" />
+    <Content Include="Views\Shopping\Witch.cshtml" />
+    <Content Include="Views\Shopping\Blacksmith.cshtml" />
+    <Content Include="Views\Shopping\Tailor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Tailor";
+}
+
+<h2>#Tailoring Shop @Html.ActionLink("Back to #Shopping", "Index", "Shopping", null, new { Class = "play_button", Style = "float:right" })</h2>
+
+<div style="height: 500px; overflow: auto;">
+    <div>
+        <div>
+            <img style="width:200px;height:200px;float:left;" src="~/Images/Shopping_Resources/shopkeeper_tailor.jpeg" />
+            <p style="width:700px;float:right;">
+                Hello there, Allow me to introduce myself, I am Lady Kathleen Waldburg, seemstress extrordinare. Could I interest you in some fine silks?
+            </p>
+        </div>
+        <br /><br />
+        <!--Clothing-->
+        <table style="width:100%">
+            <tr style="background-color:#dddddd">
+                <th>Description</th>
+                <th>Price (GP)</th>
+                <th>Special</th>
+            </tr>
+            <tr>
+                <td>Acrobat Boots</td>
+                <td>520</td>
+                <td>Requires Level 2. Daily Power : Stand up from Prone as a Minor Action.</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Ballroom Dress</td>
+                <td>1000</td>
+                <td>Glitters like stars on a clear night</td>
+            </tr>
+            <tr >
+                <td>Black Leather Gloves</td>
+                <td>360</td>
+                <td>Gain a +1 Item Bonus to Thievery Checks</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Cloak of Resistance</td>
+                <td>520</td>
+                <td>Gain a +1 Item Bonus to Fortitude, Reflex and Will Defenses. Daily Power : Gain Resist 5 to All Damage until the start of your next turn.</td>
+            </tr>
+            <tr>
+                <td>Fine Silk Clothes</td>
+                <td>50</td>
+                <td></td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Fancy Silk Clothes</td>
+                <td>100</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Leather Shoes</td>
+                <td>100</td>
+                <td></td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Tailored Tuxedo</td>
+                <td>700</td>
+                <td>Fits like a glove</td>
+            </tr>
+            <tr>
+                <td>Ultimate Wedding Dress</td>
+                <td>25000</td>
+                <td>Wearing this, you'd be the envy of the Queen herself.</td>
+            </tr>
+        </table>
+        <!--End Clothing-->
+        <br /><br />
+        <!--Armour-->
+        <table style="width:100%">
+            <tr style="background-color:#dddddd">
+                <th>Armour</th>
+                <th>AC Bonus</th>
+                <th>Check Penalty</th>
+                <th>Speed Penalty</th>
+                <th>Price (GP)</th>
+            </tr>
+            <tr>
+                <td>Cloth Armour (Wool Clothing)</td>
+                <td>+0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+            </tr>
+            <tr style="background-color:#dddddd">
+                <td>Leather Armour</td>
+                <td>+2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>Hide Armour</td>
+                <td>+3</td>
+                <td>-1</td>
+                <td>0</td>
+                <td>30</td>
+            </tr>
+        </table>
+        <!--End Armour-->
+    </div>
+</div>

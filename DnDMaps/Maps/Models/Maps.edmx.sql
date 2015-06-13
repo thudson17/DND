@@ -1,9 +1,9 @@
 
 -- --------------------------------------------------
--- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
+-- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 05/23/2015 07:23:30
--- Generated from EDMX file: C:\Users\Ray\Documents\GitHub\DND\DnDMaps\Maps\Models\Maps.edmx
+-- Date Created: 05/23/2015 14:19:55
+-- Generated from EDMX file: C:\Git Projects\DND\DnDMaps\Maps\Models\Maps.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -180,7 +180,6 @@ ADD CONSTRAINT [FK_Character_Player]
     REFERENCES [dbo].[Players]
         ([Player_ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_Character_Player'
 CREATE INDEX [IX_FK_Character_Player]
@@ -195,7 +194,6 @@ ADD CONSTRAINT [FK_EncounterEncounter_Monster]
     REFERENCES [dbo].[Encounters]
         ([Encounter_ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_EncounterEncounter_Monster'
 CREATE INDEX [IX_FK_EncounterEncounter_Monster]
@@ -228,7 +226,6 @@ ADD CONSTRAINT [FK_Encounter_CharacterCharacter]
     REFERENCES [dbo].[Characters]
         ([Character_ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_Encounter_CharacterCharacter'
 CREATE INDEX [IX_FK_Encounter_CharacterCharacter]
